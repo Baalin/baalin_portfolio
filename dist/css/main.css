@@ -6,7 +6,7 @@ body {
 }
 
 body {
-  background: url(img/dragonreach_main.png);
+  background: url(../img/dragonreach_main.png);
   background-size: cover;
   background-position: 65% 0%;
   color: #ffffe1;
