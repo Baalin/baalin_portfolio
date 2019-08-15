@@ -1,5 +1,209 @@
-$primary-color: #444;
+@import "config";
 
+html,
 body {
-  background: $primary-color;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background: url(/dist/img/dragonreach_main.png);
+  background-size: cover;
+  background-position: 65% 0%;
+  color: $secondary-color;
+}
+
+.overlay-color {
+  width: 100%;
+  height: 100%;
+  background: rgba($primary-color, $background-opacity);
+  position: absolute;
+  z-index: -1;
+}
+
+#main-text {
+  display: table;
+  background-color: rgba($text-background-color, 0.5);
+  border-radius: 25px;
+  margin: 4rem;
+  margin-top: 30vh;
+  padding: 2rem;
+  & #large-text {
+    text-align: center;
+  }
+}
+
+footer {
+  background-color: rgba($text-background-color, 0.9);
+  padding: 0.8rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &-branding,
+  &-list,
+  &-gif {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 33.33%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &-gif {
+    background: rgba(darken($primary-color, 5), 0.9);
+    transform: translate3d(0, 100%, 0);
+    @include easeOut;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    &-image {
+      background: url(/dist/img/baalin_dance.gif);
+      background-size: cover;
+      background-position: center;
+      width: 90%;
+      height: 90%;
+      border-radius: 4%;
+      border: 3px solid;
+      border-color: rgba($secondary-color, 0.6);
+      opacity: 0;
+      //transition: all 2s ease-out;
+
+      &.show {
+        //@include easeOut;
+        //transition: all 2s ease-out;
+        opacity: 100;
+        transition: all 10s ease-in;
+        transition-delay: 1s;
+        //transition: all 3s ease-out;
+      }
+    }
+  }
+
+  &-branding {
+    background: rgba($secondary-color, 0.5);
+    transform: translate3d(0, -100%, 0);
+    @include easeOut;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    &-image {
+      background: url(/dist/img/jarl_baalin_profile.jpg);
+      //background-repeat: no-repeat;
+      width: 400px;
+      height: 400px;
+      background-position: center;
+      //background-size: 400px;
+      border-radius: 50%;
+      border: 3px solid;
+      border-color: rgba($primary-color, 1);
+      background-size: cover;
+    }
+  }
+
+  &-list {
+    background: rgba($secondary-color, 0.5);
+    font-size: 30px;
+    text-transform: uppercase;
+    //text-decoration: none;
+    //color: $primary-color;
+    list-style: none;
+    transform: translate3d(0, -100%, 0);
+    @include easeOut;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &-item {
+    //text-decoration: none;
+    padding: 10px 0;
+  }
+
+  &-link {
+    text-decoration: none;
+    color: darken($primary-color, 5);
+    font-weight: 590;
+    // padding: 1rem 0;
+    @include easeOut;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+/*.menu-list {
+  visibility: hidden;
+  &.hide {
+    visibility: visible;
+  }
+}
+
+.menu-branding,
+.menu-list {
+  display: flex;
+  flex-flow: column wrap;
+}
+*/
+
+.menu-button {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  @include easeOut;
+
+  .menu-line {
+    background: #fff;
+    height: 3px;
+    width: 28px;
+    margin: 0 0 5px 0;
+    @include easeOut;
+  }
+
+  &.close {
+    transform: rotate(180deg) translate(0px, 6px);
+    //transition: transform 0.5s linear;
+    //@include easeOut();
+
+    .menu-line {
+      //Line - 1, Rotate
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        //transform: translate(5px, 5px);
+      }
+      //Line - 2, Hide
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      //Line - 3, Rotate
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
 }
