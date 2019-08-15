@@ -73,7 +73,7 @@ footer {
   transform: translate3d(0, 0, 0);
 }
 .menu-gif-image {
-  background: url(../img/baalin_dance.gif);
+  background: url(https://github.com/Baalin/baalin_portfolio/blob/master/dist/img/baalin_dance.gif);
   background-size: cover;
   background-position: center;
   width: 90%;
